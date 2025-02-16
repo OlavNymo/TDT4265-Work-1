@@ -5,37 +5,30 @@ from pathlib import Path
 import argparse
 
 # Import all scenes
-from scenes.scene1_intro import IntroScene
-from scenes.scene2_what_are_lmms import WhatAreLMMsScene
-from scenes.scene3_architecture import ArchitectureScene
-from scenes.scene4_training import TrainingScene
-from scenes.scene5_applications import ApplicationsScene
-from scenes.scene6_challenges import ChallengesScene
-from scenes.scene7_future import FutureScene
-from scenes.scene8_conclusion import ConclusionScene
+from src.scenes.scene1_intro import IntroScene
+from src.scenes.scene2_multimodal_architecture import MultimodalArchitectureScene
+from src.scenes.scene3_core_architectures import CoreArchitecturesScene
+from src.scenes.scene4_training_process import TrainingProcessScene
 
 # Scene mapping
 SCENES = {
     'intro': IntroScene,
-    'what_are_lmms': WhatAreLMMsScene,
-    'architecture': ArchitectureScene,
-    'training': TrainingScene,
-    'applications': ApplicationsScene,
-    'challenges': ChallengesScene,
-    'future': FutureScene,
-    'conclusion': ConclusionScene
+    'multimodal_architecture': MultimodalArchitectureScene,
+    'core_architectures': CoreArchitecturesScene,
+    'training_process': TrainingProcessScene,
 }
 
 def main():
     parser = argparse.ArgumentParser(description='Render LMM educational video scenes')
     parser.add_argument('--scene', type=str, help='Specific scene to render')
-    parser.add_argument('--quality', type=str, default='production',
-                       choices=['production', 'medium_quality', 'low_quality'],
+    parser.add_argument('--quality', type=str, default='production_quality',
+                       choices=['fourk_quality', 'production_quality', 'high_quality', 
+                               'medium_quality', 'low_quality', 'example_quality'],
                        help='Quality of the render')
     args = parser.parse_args()
 
     # Set up the configuration
-    config.background_color = WHITE
+    config.background_color = BLACK
     config.frame_width = 16
     config.frame_height = 9
     config.pixel_width = 1920
